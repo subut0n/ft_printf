@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/22 11:36:46 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/01/22 16:51:13 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	define_width(const char *ret, size_t i, t_options *options, va_list args)
 
 void	define_precision(const char *ret, size_t i, t_options *options, va_list args)
 {
-	unsigned int numb;
+	int numb;
 
 	numb = 0;
 	while (ret[i] != '.' && !is_specifier(ret[i]))
@@ -100,8 +100,10 @@ void	define_precision(const char *ret, size_t i, t_options *options, va_list arg
 		if (ft_isdigit(ret[i - 1]) || ft_isdigit(ret[i + 1]))
 			options->error = 1;
 		numb = va_arg(args, int);
+		if (numb < 0)
+			numb = 0;
 	}
-	options->dot = numb;
+	options->precision = numb;
 }
 
 void	define_specifier(const char *ret, size_t i, t_options *options)
@@ -129,7 +131,7 @@ void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
 		printf("minus = %d\n", options->minus); //
 		printf("zero = %d\n", options->zero); //
 		printf("width = %d\n", options->width); //
-		printf("precision = %d\n", options->dot); //
+		printf("precision = %d\n", options->precision); //
 		printf("specifier = %c\n", options->specifier); //
 	}
 }
