@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/20 17:37:45 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/01/22 11:36:46 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,30 @@ void	define_flags(const char *ret, size_t i, t_options *options)
 
 void	define_width(const char *ret, size_t i, t_options *options, va_list args)
 {
-	unsigned int width;
+	int width;
+	size_t secure_flags;
 
 	width = 0;
+	secure_flags = i;
 	while (is_in_flags(ret[i]))
-		i++;
-	if (ret[i] == '*')
 	{
-		if ((ret[i - 1] != '0' && ft_isdigit(ret[i - 1])) || ft_isdigit(ret[i + 1]))
-			options->error = 1;
-		width = va_arg(args, int);
+		i++;
+		secure_flags++;
 	}
 	while (ret[i] >= '0' && ret[i] <= '9')
 	{
 		width = (width * 10) + (unsigned int)ret[i] - 48;
 		i++;
+	}
+	if (ret[i] == '*')
+	{
+		if (ret[i - 1] == '0' && i - 1 >= secure_flags)
+			options->error = 1;
+		if ((ret[i - 1] != '0' && ft_isdigit(ret[i - 1])) || ft_isdigit(ret[i + 1]))
+			options->error = 1;
+		width = va_arg(args, int);
+		if (width < 0)
+			width = 0;
 	}
 	options->width = width;
 }
@@ -77,22 +86,20 @@ void	define_precision(const char *ret, size_t i, t_options *options, va_list arg
 	while (ret[i] != '.' && !is_specifier(ret[i]))
 		i++;
 	if (ret[i] == '.')
-		numb = 1;
+		options->dot = 1;
 	i = i + 1;
-	if (numb == 1 && ret[i] == '*')
-	{
-		if (ft_isdigit(ret[i - 1]) || ft_isdigit(ret[i + 1]))
-			options->error = 1;
-		numb = va_arg(args, int);
-		if (numb < 0)
-			numb = 0;
-	}
 	while (ret[i] >= '0' && ret[i] <= '9')
 	{
 		if (numb == 1)
 			numb = 0;
 		numb = (numb * 10) + (unsigned int)ret[i] - 48;
 		i++;
+	}
+	if (options->dot == 1 && ret[i] == '*')
+	{
+		if (ft_isdigit(ret[i - 1]) || ft_isdigit(ret[i + 1]))
+			options->error = 1;
+		numb = va_arg(args, int);
 	}
 	options->dot = numb;
 }

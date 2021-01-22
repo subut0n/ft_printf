@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:40:12 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/20 17:28:00 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/01/22 11:37:28 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 
 int main (void)
 {
-	ft_printf("%*.256*d", 55, 56);
+	ft_printf("%-123.*s", 55);
 }
