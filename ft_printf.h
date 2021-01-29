@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:35:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 12:28:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 14:48:41 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int		intf(const char *ret, size_t i, t_options *options, va_list args);
 int		uintf(const char *ret, size_t i, t_options *options, va_list args);
 int		charf(t_options *options, va_list args);
 int		strf(t_options *options, va_list args);
+int		uhexaminf(const char *ret, size_t i, t_options *options, va_list args);
+int		uhexamajf(const char *ret, size_t i, t_options *options, va_list args);
 
 #endif
