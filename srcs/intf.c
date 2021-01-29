@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 12:16:16 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 14:09:56 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int	intf(const char *ret, size_t i, t_options *options, va_list args)
 	int nbr_char;
 	int nbr_digits;
 	int nbr;
-	int empty_to_fill;
 	char *str;
 
 	nbr = va_arg(args, int);
