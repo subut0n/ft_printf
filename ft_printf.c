@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:31:36 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 11:54:38 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 15:52:57 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	execution(const char *ret, t_options *options, va_list args)
 		if (ret[i] == '%')
 		{
 			define_struct(ret, i, options, args);
-			nbr_char += print_formated(ret, i, options, args);
+			nbr_char += print_formated(options, args);
 			i = i + 1;
 			while (!is_specifier(ret[i]))
 				i++;

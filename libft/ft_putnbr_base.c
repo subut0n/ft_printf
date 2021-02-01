@@ -6,11 +6,13 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 14:51:17 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 14:55:19 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 12:18:20 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_check_base(char *base)
+#include "libft.h"
+
+int		ft_check_base(const char *base)
 {
 	int i;
 	int j;
@@ -36,7 +38,7 @@ int		ft_check_base(char *base)
 	return (1);
 }
 
-void	ft_printnbr_base(unsigned long int nb, char *base)
+void	ft_printnbr_base(unsigned long int nb, const char *base)
 {
 	int size_of_base;
 	int checkbase;
@@ -48,7 +50,9 @@ void	ft_printnbr_base(unsigned long int nb, char *base)
 	else
 	{
 		if (nb >= 0 && nb <= size_of_base - 1)
+		{
 			ft_putchar(base[nb]);
+		}
 		else
 		{
 			ft_printnbr_base(nb / size_of_base, base);
@@ -57,7 +61,7 @@ void	ft_printnbr_base(unsigned long int nb, char *base)
 	}
 }
 
-void	ft_putnbr_base(unsigned int nbr, char *base)
+void	ft_putnbr_base(unsigned int nbr, const char *base)
 {
 	ft_printnbr_base((long)nbr, base);
 }

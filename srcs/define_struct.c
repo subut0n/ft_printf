@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 12:11:52 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 14:39:25 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,12 @@ void	define_specifier(const char *ret, size_t i, t_options *options)
 		options->error = 1;
 }
 
-void	redefine_flags(t_options *options)
+void	redefine_struct(t_options *options)
 {
 	if (options->zero == 1 && options->minus == 1)
 		options->zero = 0;
+	if (options->zero == 1 && options->minus == 0 && options->precision == 0)
+		options->precision = options->width;
 }
 
 void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
@@ -134,7 +136,7 @@ void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
 		define_width(ret, i, options, args);
 		define_precision(ret, i, options, args);
 		define_specifier(ret, i, options);
-		redefine_flags(options);
+		redefine_struct(options);
 		// printf("\n"); 									//
 		// printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
 		// printf("minus = %d\n", options->minus); 			//

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:35:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 14:48:41 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 15:52:37 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	define_flags(const char *ret, size_t i, t_options *options);
 void	define_width(const char *ret, size_t i, t_options *options, va_list args);
 void	define_precision(const char *ret, size_t i, t_options *options, va_list args);
 void	define_specifier(const char *ret, size_t i, t_options *options);
-void	redefine_flags(t_options *options);
+void	redefine_struct(t_options *options);
 void	define_struct(const char *ret, size_t i, t_options *options, va_list args);
-int		print_formated(const char *ret, size_t i, t_options *options, va_list args);
+int		print_formated(t_options *options, va_list args);
 int		ft_printf(const char *format, ...);
 int		execution(const char *ret, t_options *options, va_list args);
-int		intf(const char *ret, size_t i, t_options *options, va_list args);
-int		uintf(const char *ret, size_t i, t_options *options, va_list args);
+int		intf(t_options *options, va_list args);
+int		uintf(t_options *options, va_list args);
 int		charf(t_options *options, va_list args);
 int		strf(t_options *options, va_list args);
-int		uhexaminf(const char *ret, size_t i, t_options *options, va_list args);
-int		uhexamajf(const char *ret, size_t i, t_options *options, va_list args);
+int		uhexaminf(t_options *options, va_list args);
+int		uhexamajf(t_options *options, va_list args);
 
 #endif

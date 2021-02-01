@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 12:28:36 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 15:58:05 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	numb_of_digits(unsigned int n)
 	return (numb);
 }
 
-static int	print_precision(unsigned int nbr, int nbr_digit, t_options *options)
+static int	print_precision(size_t nbr_digit, t_options *options)
 {
 	int nbr_char;
-	int precision;
+	size_t precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -47,10 +47,10 @@ static int	print_precision(unsigned int nbr, int nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_width(unsigned int nbr, int nbr_digit, t_options *options)
+static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 {
 	int nbr_char;
-	int width;
+	size_t width;
 
 	nbr_char = 0;
 	width = options->width;
@@ -62,7 +62,7 @@ static int print_width(unsigned int nbr, int nbr_digit, t_options *options)
 		width = width - nbr_digit;
 	while (width > options->precision)
 	{
-		ft_putchar('x');
+		ft_putchar(' ');
 		nbr_char++;
 		width--;
 	}
@@ -88,13 +88,11 @@ static int print_nbr(unsigned int nbr, t_options *options)
 	return ((int)ft_strlen(str_nbr));
 }
 
-int	uintf(const char *ret, size_t i, t_options *options, va_list args)
+int	uintf(t_options *options, va_list args)
 {
 	int nbr_char;
-	int nbr_digits;
+	size_t nbr_digits;
 	unsigned int nbr;
-	int empty_to_fill;
-	char *str;
 
 	nbr = va_arg(args, unsigned int);
 	nbr_digits = numb_of_digits(nbr);
@@ -103,14 +101,14 @@ int	uintf(const char *ret, size_t i, t_options *options, va_list args)
 		return (0);
 	if (options->minus)
 	{
-		nbr_char += print_precision(nbr, nbr_digits, options);
+		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
 		nbr_char += print_width(nbr, nbr_digits, options);
 	}
 	else
 	{
 		nbr_char = print_width(nbr, nbr_digits, options);
-		nbr_char += print_precision(nbr, nbr_digits, options);
+		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
 	}
 	return (nbr_char);

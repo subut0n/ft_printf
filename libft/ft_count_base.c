@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   charf.c                                            :+:      :+:    :+:   */
+/*   ft_count_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 11:29:59 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 14:41:08 by addzikow         ###   ########lyon.fr   */
+/*   Created: 2021/02/01 12:46:40 by addzikow          #+#    #+#             */
+/*   Updated: 2021/02/01 12:57:45 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		charf(t_options *options, va_list args)
+size_t ft_count_base(unsigned int nbr, const char *base)
 {
-	char c;
-	int width;
-	int nbr_char;
+	size_t i;
+	size_t len_base;
 
-	c = va_arg(args, int);
-	width = options->width - 1;
-	nbr_char = 0;
-	while (width-- > 0)
+	len_base = ft_strlen(base);
+	i = 0;
+	while (nbr)
 	{
-		ft_putchar(' ');
-		nbr_char++;
+		nbr = nbr / len_base;
+		i++;
 	}
-	ft_putchar(c);
-	nbr_char++;
-	return(nbr_char);
+	return (i);
 }
