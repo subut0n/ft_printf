@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 14:51:17 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 12:18:20 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/01 16:01:23 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_check_base(const char *base)
 
 void	ft_printnbr_base(unsigned long int nb, const char *base)
 {
-	int size_of_base;
+	unsigned long int size_of_base;
 	int checkbase;
 
 	size_of_base = ft_strlen(base);
