@@ -7,28 +7,25 @@ $(wildcard srcs/*.c) \
 $(wildcard libft/*.c)
 
 
-OBJS		= ${SRCS:.c=.o}
+OBJS		= $(SRCS:.c=.o)
 
 CC			= cc
 RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
 
-$(NAME):	${OBJS}
-		ar rcs ${NAME} $?
+$(NAME):	$(OBJS) 
+		ar rcs $(NAME) $(OBJS)
 
 %.o: 	%.c	ft_printf.h
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-bonus: 	${OBJS}
-		ar rs ${NAME} ${OBJS}
-
-all:	${NAME}
+all:	$(NAME)
 
 clean:
-		${RM} ${OBJS}
+		$(RM) $(OBJS)
 
 fclean:	clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 
 re:		fclean all
