@@ -5,15 +5,15 @@ NAME	= libprintf.a
 PATH_INCS 	= includes
 PATH_SRCS 	= srcs
 PATH_OBJS 	= objs
-PATH_LIBFT	= ../libft	
+PATH_LIBFT	= libft
 
 
-CORE 		= 	ft_printf.c
+SRCS_CORE 	= 	$(addprefix core/, ft_printf.c)
 SRCS_DISP	=	$(addprefix display/, charf.c intf.c strf.c uhexaminf.c uhexamajf.c uintf.c)
 SRCS_UTILS	=	$(addprefix utils/, print_formated.c define_struct.c)
-SRCS		=	$(addprefix $(PATH_SRCS)/, $(SRCS_DISP) $(SRCS_UTILS) $(CORE))
+SRCS		=	$(addprefix $(PATH_SRCS)/, $(SRCS_DISP) $(SRCS_UTILS) $(SRCS_CORE))
 OBJS		=	$(addprefix $(PATH_OBJS)/, $(notdir $(SRCS:.c=.o)))
-INCS		=	$(PATH_INCS)/ft_printf.h
+INCS		=	$(PATH_INCS)/ft_printf.h $(PATH_LIBFT)/libft.h
 
 GCC			= gcc
 COMP_INC	= -I$(PATH_LIBFT) -I$(PATH_INCS)
@@ -25,7 +25,7 @@ $(NAME):	$(OBJS) $(INCS)
 			ar rcs $(NAME) $(OBJS)
 
 $(PATH_OBJS)/%.o : $(PATH_SRCS)/*/%.c $(INCS)
-				$(GCC) $(CFLAGS) $(COMP_INC) -c $< -o
+				$(GCC) $(CFLAGS) $(COMP_INC) -c $< -o $@
 
 all:	init $(NAME)
 

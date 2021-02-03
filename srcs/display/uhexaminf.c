@@ -6,11 +6,11 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 13:53:00 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 13:50:19 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 16:33:33 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 static int	print_precision(size_t nbr_digit, t_options *options)
 {

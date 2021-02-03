@@ -6,11 +6,11 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 13:49:52 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 16:33:19 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 static int	numb_of_digits(int n)
 {

@@ -6,11 +6,11 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:29:59 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 13:49:23 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 16:33:14 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 int		charf(t_options *options, va_list args)
 {
