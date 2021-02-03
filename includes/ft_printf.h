@@ -6,14 +6,14 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:35:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 15:52:37 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 13:48:28 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdarg.h>
 #include <limits.h>
 

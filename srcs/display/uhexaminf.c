@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uhexamajf.c                                        :+:      :+:    :+:   */
+/*   uhexaminf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 14:19:27 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 15:56:14 by addzikow         ###   ########lyon.fr   */
+/*   Created: 2021/01/29 13:53:00 by addzikow          #+#    #+#             */
+/*   Updated: 2021/02/03 13:50:19 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static int	print_precision(size_t nbr_digit, t_options *options)
 {
@@ -62,18 +62,18 @@ static int print_nbr(unsigned int nbr, t_options *options)
 			ft_putstr(" ");
 		return (0);
 	}
-	ft_putnbr_base(nbr,"0123456789ABCDEF");
-	return (ft_count_base(nbr,"0123456789ABCDEF"));
+	ft_putnbr_base(nbr,"0123456789abcdef");
+	return (ft_count_base(nbr,"0123456789abcdef"));
 }
 
-int		uhexamajf(t_options *options, va_list args)
+int		uhexaminf(t_options *options, va_list args)
 {
 	int nbr_char;
 	size_t nbr_digits;
 	unsigned int nbr;
 
 	nbr = va_arg(args, unsigned int);
-	nbr_digits = ft_count_base(nbr, "0123456789ABCDEF");
+	nbr_digits = ft_count_base(nbr, "0123456789abcdef");
 	nbr_char = 0;
 	if (nbr == 0 && options->dot == 0 && options->width == 0)
 		return (0);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uintf.c                                            :+:      :+:    :+:   */
+/*   intf.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 15:58:05 by addzikow         ###   ########lyon.fr   */
+/*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
+/*   Updated: 2021/02/03 13:49:52 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
-static int	numb_of_digits(unsigned int n)
+static int	numb_of_digits(int n)
 {
 	int		numb;
 	long	nb;
@@ -47,10 +47,10 @@ static int	print_precision(size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int print_width(int nbr, size_t nbr_digit, t_options *options)
 {
 	int nbr_char;
-	size_t width;
+	unsigned int width;
 
 	nbr_char = 0;
 	width = options->width;
@@ -69,7 +69,20 @@ static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_nbr(unsigned int nbr, t_options *options)
+static int print_sign(int nbr)
+{
+	int nbr_char;
+
+	nbr_char = 0;
+	if (nbr < 0)
+	{
+		ft_putchar('-');
+		nbr_char = 1;
+	}
+	return(nbr_char);
+}
+
+static int print_nbr(int nbr, t_options *options)
 {
 	char *str_nbr;
 
@@ -83,24 +96,25 @@ static int print_nbr(unsigned int nbr, t_options *options)
 			ft_putstr(" ");
 		return (0);
 	}
-	str_nbr = ft_uitoa(nbr);
+	str_nbr = ft_itoa(nbr);
 	ft_putstr(str_nbr);
 	return ((int)ft_strlen(str_nbr));
 }
 
-int	uintf(t_options *options, va_list args)
+int	intf(t_options *options, va_list args)
 {
 	int nbr_char;
 	size_t nbr_digits;
-	unsigned int nbr;
+	int nbr;
 
-	nbr = va_arg(args, unsigned int);
+	nbr = va_arg(args, int);
 	nbr_digits = numb_of_digits(nbr);
 	nbr_char = 0;
 	if (nbr == 0 && options->dot == 0 && options->width == 0)
 		return (0);
 	if (options->minus)
 	{
+		nbr_char = print_sign(nbr);
 		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
 		nbr_char += print_width(nbr, nbr_digits, options);
@@ -108,6 +122,7 @@ int	uintf(t_options *options, va_list args)
 	else
 	{
 		nbr_char = print_width(nbr, nbr_digits, options);
+		nbr_char += print_sign(nbr);
 		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
 	}

@@ -6,11 +6,11 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:31:49 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 15:52:25 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 13:50:00 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	print_formated(t_options *options, va_list args)
 {
