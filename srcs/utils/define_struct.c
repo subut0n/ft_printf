@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 16:34:11 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 16:16:41 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_struct(t_options *options)
 	options->width = 0;
 	options->minus = 0;
 	options->zero = 0;
+	options->precision = 0;
 	options->dot = 0;
 	options->error = 0;
 }

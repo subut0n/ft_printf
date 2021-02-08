@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 16:33:42 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/08 14:32:09 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int print_nbr(unsigned int nbr, t_options *options)
 	}
 	str_nbr = ft_uitoa(nbr);
 	ft_putstr(str_nbr);
+	free(str_nbr);
 	return ((int)ft_strlen(str_nbr));
 }
 

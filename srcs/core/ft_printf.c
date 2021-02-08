@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:31:36 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 16:05:15 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/03 17:39:44 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	nbr = execution(ret, &options, args);
 	va_end(args);
+	free((char *)ret);
 	return(nbr);
 }
