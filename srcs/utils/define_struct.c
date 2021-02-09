@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/08 16:16:41 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 15:08:21 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	define_precision(const char *ret, size_t i, t_options *options, va_list arg
 			options->error = 1;
 		numb = va_arg(args, int);
 		if (numb < 0)
-			numb = 0;
+			numb = 1;
 	}
 	options->precision = numb;
 }
@@ -123,7 +123,7 @@ void	redefine_struct(t_options *options)
 {
 	if (options->zero == 1 && options->minus == 1)
 		options->zero = 0;
-	if (options->zero == 1 && options->minus == 0 && options->precision == 0)
+	if (options->zero == 1 && options->minus == 0 && options->precision == 0 && options->dot == 0)
 		options->precision = options->width;
 }
 

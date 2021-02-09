@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/08 17:01:13 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 15:06:29 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,12 @@ static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
 
 	nbr_char = 0;
 	precision = options->precision;
-	if (nbr < 0 && options->zero == 1 && options->dot == 0)
+	if (precision < 0)
+		precision *= -1;
+	if (nbr < 0 && options->dot == 0)
 		nbr_digit = nbr_digit + 1;
+	if (nbr == 0 && options->precision < 0)
+		nbr_digit = 0;
 	while (precision > nbr_digit)
 	{
 		ft_putchar('0');
@@ -93,15 +97,17 @@ static int print_sign(int nbr)
 static int print_nbr(int nbr, t_options *options)
 {
 	char *str_nbr;
-
-	if (nbr < 0)
-		nbr = -nbr;
+	long numb;
+	
+	numb = (long)nbr;
+	if (numb < 0)
+		numb = -numb;
 	if (nbr == 0 && options->dot == 1)
 	{
 		if (options->precision == 0)
 			return (0);
 	}
-	str_nbr = ft_itoa(nbr);
+	str_nbr = ft_ltoa(numb);
 	ft_putstr(str_nbr);
 	free(str_nbr);
 	return ((int)ft_strlen(str_nbr));
@@ -116,8 +122,6 @@ int	intf(t_options *options, va_list args)
 	nbr = va_arg(args, int);
 	nbr_digits = numb_of_digits(nbr);
 	nbr_char = 0;
-	// if (nbr == 0 && options->dot == 1)
-	// 	return (0);
 	if (options->minus)
 	{
 		nbr_char = print_sign(nbr);
