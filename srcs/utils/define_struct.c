@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 15:08:21 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 15:57:13 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,14 @@ void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
 		define_precision(ret, i, options, args);
 		define_specifier(ret, i, options);
 		redefine_struct(options);
-		// printf("\n"); 									//
-		// printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
-		// printf("minus = %d\n", options->minus); 			//
-		// printf("zero = %d\n", options->zero); 			//
-		// printf("width = %d\n", options->width); 			//
-		// printf("dot = %d\n", options->dot);				//
-		// printf("precision = %d\n", options->precision);	//
-		// printf("specifier = %c\n", options->specifier);	//
-		// printf("\n");									//
+		printf("\n"); 									//
+		printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
+		printf("minus = %d\n", options->minus); 			//
+		printf("zero = %d\n", options->zero); 			//
+		printf("width = %d\n", options->width); 			//
+		printf("dot = %d\n", options->dot);				//
+		printf("precision = %d\n", options->precision);	//
+		printf("specifier = %c\n", options->specifier);	//
+		printf("\n");									//
 	}
 }
