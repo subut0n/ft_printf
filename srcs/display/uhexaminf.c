@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   uhexaminf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 13:53:00 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/03 16:33:33 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:09:44 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ static int	print_precision(size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int print_width(size_t nbr_digit, t_options *options)
 {
 	int nbr_char;
 	size_t width;
 
 	nbr_char = 0;
 	width = options->width;
-	if (nbr < 0 && width != 0)
-		width = width - 1;
 	if (width < options->precision)
 		width = 0;
 	if ((options->minus || options->zero) && options->precision == 0 && width >= nbr_digit)
@@ -52,8 +50,6 @@ static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 
 static int print_nbr(unsigned int nbr, t_options *options)
 {
-	if (nbr < 0)
-		nbr = -nbr;
 	if (nbr == 0 && options->precision == 0 && options->width == 0)
 		return (0);
 	if (nbr == 0 && options->precision == 0 && options->width >= 1)
@@ -81,11 +77,11 @@ int		uhexaminf(t_options *options, va_list args)
 	{
 		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
-		nbr_char += print_width(nbr, nbr_digits, options);
+		nbr_char += print_width(nbr_digits, options);
 	}
 	else
 	{
-		nbr_char = print_width(nbr, nbr_digits, options);
+		nbr_char = print_width(nbr_digits, options);
 		nbr_char += print_precision(nbr_digits, options);
 		nbr_char += print_nbr(nbr, options);
 	}

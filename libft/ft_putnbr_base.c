@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 14:51:17 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/01 16:01:23 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/02/09 12:13:29 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_printnbr_base(unsigned long int nb, const char *base)
 		ft_putchar('\0');
 	else
 	{
-		if (nb >= 0 && nb <= size_of_base - 1)
+		if (nb <= size_of_base - 1)
 		{
 			ft_putchar(base[nb]);
 		}
