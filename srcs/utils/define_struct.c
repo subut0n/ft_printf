@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 15:57:13 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/09 15:09:01 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_struct(t_options *options)
 	options->minus = 0;
 	options->zero = 0;
 	options->precision = 0;
+	options->neg_prec = 0;
 	options->dot = 0;
 	options->error = 0;
 }
@@ -103,7 +104,10 @@ void	define_precision(const char *ret, size_t i, t_options *options, va_list arg
 			options->error = 1;
 		numb = va_arg(args, int);
 		if (numb < 0)
+		{
+			options->neg_prec = 1;
 			numb = 1;
+		}
 	}
 	options->precision = numb;
 }
@@ -138,14 +142,14 @@ void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
 		define_precision(ret, i, options, args);
 		define_specifier(ret, i, options);
 		redefine_struct(options);
-		printf("\n"); 									//
-		printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
-		printf("minus = %d\n", options->minus); 			//
-		printf("zero = %d\n", options->zero); 			//
-		printf("width = %d\n", options->width); 			//
-		printf("dot = %d\n", options->dot);				//
-		printf("precision = %d\n", options->precision);	//
-		printf("specifier = %c\n", options->specifier);	//
-		printf("\n");									//
+		// printf("\n"); 									//
+		// printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
+		// printf("minus = %d\n", options->minus); 			//
+		// printf("zero = %d\n", options->zero); 			//
+		// printf("width = %d\n", options->width); 			//
+		// printf("dot = %d\n", options->dot);				//
+		// printf("precision = %d\n", options->precision);	//
+		// printf("specifier = %c\n", options->specifier);	//
+		// printf("\n");									//
 	}
 }
