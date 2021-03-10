@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uhexaminf.c                                        :+:      :+:    :+:   */
+/*   pointerf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 14:16:20 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 15:55:02 by addzikow         ###   ########lyon.fr   */
+/*   Created: 2021/03/10 15:57:25 by addzikow          #+#    #+#             */
+/*   Updated: 2021/03/10 16:18:14 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,21 @@ static int print_nbr(unsigned int nbr, t_options *options)
 		if (options->precision == 0)
 			return (0);
 	}
-	ft_putnbr_base(nbr,"0123456789abcdef");
-	digit_in_base = ft_count_base(nbr,"0123456789abcdef");
+	ft_putnbr_base(nbr,"0123456789ABCDEF");
+	digit_in_base = ft_count_base(nbr,"0123456789ABCDEF");
 	if (nbr == 0)
 		digit_in_base = 1;
 	return (digit_in_base);
 }
 
-int	uhexaminf(t_options *options, va_list args)
+int	pointerf(t_options *options, va_list args)
 {
 	int nbr_char;
 	size_t nbr_digits;
 	unsigned int nbr;
 
 	nbr = va_arg(args, int);
-	nbr_digits = ft_count_base(nbr,"0123456789abcdef");
+	nbr_digits = ft_count_base(nbr,"0123456789ABCDEF");
 	if (nbr == 0)
 		nbr_digits = 1;
 	nbr_char = 0;
