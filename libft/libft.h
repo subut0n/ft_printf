@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 16:18:54 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 14:07:32 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/11 14:48:54 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 void				*ft_putstr(const char *ret);
 void				ft_putchar(char c);
 char				*ft_uitoa(unsigned int n);
-void				ft_putnbr_base(unsigned int nbr, const char *base);
-size_t 				ft_count_base(unsigned int nbr, const char *base);
+void				ft_putnbr_base(unsigned long nbr, const char *base);
+size_t 				ft_count_base(unsigned long nbr, const char *base);
 char				*ft_ltoa(long n);
 
 

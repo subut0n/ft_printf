@@ -8,7 +8,7 @@ PATH_LIBFT	= libft
 LIBFT		= $(addprefix libft/, libft.a)
 
 SRCS_CORE 	= 	$(addprefix core/, ft_printf.c)
-SRCS_DISP	=	$(addprefix display/, charf.c intf.c strf.c uhexaminf.c uhexamajf.c uintf.c)
+SRCS_DISP	=	$(addprefix display/, charf.c intf.c strf.c uhexaminf.c uhexamajf.c uintf.c pointerf.c percentf.c)
 SRCS_UTILS	=	$(addprefix utils/, print_formated.c define_struct.c)
 SRCS		=	$(addprefix $(PATH_SRCS)/, $(SRCS_DISP) $(SRCS_UTILS) $(SRCS_CORE))
 OBJS		=	$(addprefix $(PATH_OBJS)/, $(notdir $(SRCS:.c=.o)))

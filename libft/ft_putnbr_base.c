@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: addzikow <addzikow@42student.lyon.fr>      +#+  +:+       +#+        */
+/*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 14:51:17 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 12:13:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/11 14:49:58 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_check_base(const char *base)
 	return (1);
 }
 
-void	ft_printnbr_base(unsigned long int nb, const char *base)
+void	ft_printnbr_base(unsigned long long nb, const char *base)
 {
 	unsigned long int size_of_base;
 	int checkbase;
@@ -61,7 +61,7 @@ void	ft_printnbr_base(unsigned long int nb, const char *base)
 	}
 }
 
-void	ft_putnbr_base(unsigned int nbr, const char *base)
+void	ft_putnbr_base(unsigned long nbr, const char *base)
 {
-	ft_printnbr_base((long)nbr, base);
+	ft_printnbr_base((unsigned long)nbr, base);
 }

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:31:49 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/09 14:26:10 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/11 15:14:10 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@ int	print_formated(t_options *options, va_list args)
 		nbr_char = uhexaminf(options, args);
 	if (options->specifier == 'X')
 		nbr_char = uhexamajf(options, args);
+	if (options->specifier == 'p')
+		nbr_char = pointerf(options, args);
+	if (options->specifier == '%')
+		nbr_char = percentf(options, args);
 	return (nbr_char);
 }

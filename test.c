@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:40:12 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 15:58:07 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/11 15:33:23 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int main (void)
 {
 	int nbr1;
 	int nbr2;
+	int a;
 
-	nbr1 = ft_printf("%.3p", 12);
+	a = 5;
+
+	nbr1 = ft_printf("%p", NULL);
 	printf("\n");
-	nbr2 = printf("%.3p", 12);
+	nbr2 = printf("%p", NULL);
 	printf("\n");
 	printf("nbr1 = %d\n", nbr1);
 	printf("nbr2 = %d\n", nbr2);
