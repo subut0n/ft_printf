@@ -6,13 +6,13 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 14:04:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 16:42:33 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int	numb_of_digits(int n)
+static int	numb_of_digits(unsigned int n)
 {
 	int		numb;
 	long	nb;
@@ -70,7 +70,10 @@ static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 		precision = nbr_digit;
 	while (width > precision)
 	{
-		ft_putchar(' ');
+		if (options->zero && options->neg_prec < 0)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
 		nbr_char++;
 		width--;
 	}
@@ -100,7 +103,7 @@ int	uintf(t_options *options, va_list args)
 	size_t nbr_digits;
 	unsigned int nbr;
 
-	nbr = va_arg(args, int);
+	nbr = va_arg(args, unsigned int);
 	nbr_digits = numb_of_digits(nbr);
 	nbr_char = 0;
 	if (options->minus)

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 15:57:25 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/11 15:34:08 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 15:41:36 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int print_width(unsigned long long nbr, size_t nbr_digit, t_options *opti
 	width = options->width;
 	if (width < options->precision)
 		width = 0;
-	if (width < nbr_digit)
+	if (width < nbr_digit + 2)
 		width = 0;
 	if (options->precision == 0 && width >= nbr_digit && options->dot == 0)
 		width = width - nbr_digit;

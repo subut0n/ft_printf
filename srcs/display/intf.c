@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 15:06:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 16:42:37 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ static int print_width(int nbr, size_t nbr_digit, t_options *options)
 		precision = nbr_digit;
 	while (width > precision)
 	{
-		ft_putchar(' ');
+		if (options->zero && options->neg_prec < 0)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
 		nbr_char++;
 		width--;
 	}

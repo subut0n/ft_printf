@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 14:37:16 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 15:47:05 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	define_precision(const char *ret, size_t i, t_options *options, va_list arg
 		numb = va_arg(args, int);
 		if (numb < 0)
 		{
-			options->neg_prec = 1;
+			options->neg_prec = numb;
 			numb = 1;
 		}
 	}
@@ -125,7 +125,7 @@ void	define_specifier(const char *ret, size_t i, t_options *options)
 
 void	redefine_struct(t_options *options)
 {
-	if (options->zero == 1 && options->minus == 1)
+	if (options->zero == 1 && options->minus == 1 && options->neg_prec == 0)
 		options->zero = 0;
 	if (options->zero == 1 && options->minus == 0 && options->precision == 0 && options->dot == 0)
 		options->precision = options->width;
@@ -149,6 +149,7 @@ void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
 		// printf("width = %d\n", options->width); 			//
 		// printf("dot = %d\n", options->dot);				//
 		// printf("precision = %d\n", options->precision);	//
+		// printf("neg_prec = %d\n", options->neg_prec);
 		// printf("specifier = %c\n", options->specifier);	//
 		// printf("\n");									//
 	}

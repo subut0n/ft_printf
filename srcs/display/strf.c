@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:55:23 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/09 15:10:03 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/12 15:16:50 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	print_width(char *str, t_options *options)
 
 	nbr_char = 0;
 	length = 0;
+	print_width = 0;
 	while (str[length])
 		length++;
 	if (options->width > 0)
@@ -52,9 +53,9 @@ static int	print_str(int is_null, char *str, t_options *options)
 	limit = 0;
 	while (str[limit])
 		limit++;
-	if (options->dot)
+	if (options->dot && options->neg_prec == 0)
 		limit = options->precision;
-	if (options->dot && is_null && options->neg_prec)
+	if (options->dot && is_null && options->neg_prec < 0)
 		limit = 6;
 	while (str[i] && i < limit)
 	{
