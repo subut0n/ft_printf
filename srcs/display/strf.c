@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:55:23 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/12 15:16:50 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 15:02:38 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	print_width(char *str, t_options *options)
 		print_width = options->width - length;
 	if (options->dot)
 	{
-		if (options->precision < length)
+		if (options->precision < length && options->neg_prec == 0)
 			print_width = options->width - options->precision;
 		if (options->precision > length && options->width == 0)
 			print_width = 0;

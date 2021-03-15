@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 15:14:30 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/11 15:28:01 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 15:04:09 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ static int print_width(t_options *options)
 	return (nbr_char);
 }
 
-int		percentf(t_options *options, va_list args)
+int		percentf(t_options *options)
 {
-	char c;
 	int nbr_char;
 
-	c = va_arg(args, int);
 	nbr_char = 0;
 	if (options->minus)
 	{
