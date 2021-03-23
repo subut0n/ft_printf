@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:07:14 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/13 12:16:19 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:49:39 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_set(char c, char const *set)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -26,7 +26,7 @@ static int	is_set(char c, char const *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *str, char const *set)
+char	*ft_strtrim(char const *str, char const *set)
 {
 	char	*tab;
 	size_t	start;
@@ -42,13 +42,15 @@ char		*ft_strtrim(char const *str, char const *set)
 		start++;
 	if (start == ft_strlen(str))
 	{
-		if (!(tab = ft_strdup("")))
+		tab = ft_strdup("");
+		if (!(tab))
 			return (NULL);
 		return (tab);
 	}
 	while (is_set(str[end - 1], set))
 		end--;
-	if (!(tab = ft_substr(str, start, (end - start))))
+	tab = ft_substr(str, start, (end - start));
+	if (!(tab))
 		return (NULL);
 	return (tab);
 }

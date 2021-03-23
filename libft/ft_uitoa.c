@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:18:58 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/29 12:23:04 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:53:03 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static unsigned int	numb_of_digits(unsigned int n)
 
 static char	*pos_transcripted_string(unsigned int n, char *str)
 {
-	int		i;
+	int				i;
 	unsigned long	nbr;
 
 	nbr = n;
@@ -54,11 +54,12 @@ static char	*pos_transcripted_string(unsigned int n, char *str)
 	return (str);
 }
 
-char		*ft_uitoa(unsigned int n)
+char	*ft_uitoa(unsigned int n)
 {
 	char	*str;
 
-	if (!(str = malloc(sizeof(char) * (numb_of_digits(n) + 1))))
+	str = malloc(sizeof(char) * (numb_of_digits(n) + 1));
+	if (!(str))
 		return (NULL);
 	str = pos_transcripted_string(n, str);
 	return (str);

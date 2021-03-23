@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/22 14:23:10 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:28:17 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	numb_of_digits(int n)
 
 static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
 {
-	int nbr_char;
-	size_t precision;
+	int		nbr_char;
+	size_t	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -53,11 +53,11 @@ static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_width(int nbr, size_t nbr_digit, t_options *options)
+static int	print_width(int nbr, size_t nbr_digit, t_options *options)
 {
-	int nbr_char;
-	unsigned int width;
-	unsigned int precision;
+	int				nbr_char;
+	unsigned int	width;
+	unsigned int	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -84,9 +84,9 @@ static int print_width(int nbr, size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_sign(int nbr)
+static int	print_sign(int nbr)
 {
-	int nbr_char;
+	int	nbr_char;
 
 	nbr_char = 0;
 	if (nbr < 0)
@@ -94,14 +94,14 @@ static int print_sign(int nbr)
 		ft_putchar('-');
 		nbr_char = 1;
 	}
-	return(nbr_char);
+	return (nbr_char);
 }
 
-static int print_nbr(int nbr, t_options *options)
+static int	print_nbr(int nbr, t_options *options)
 {
-	char *str_nbr;
-	long numb;
-	
+	char	*str_nbr;
+	long	numb;
+
 	numb = (long)nbr;
 	if (numb < 0)
 		numb = -numb;
@@ -118,9 +118,9 @@ static int print_nbr(int nbr, t_options *options)
 
 int	intf(t_options *options, va_list args)
 {
-	int nbr_char;
-	size_t nbr_digits;
-	int nbr;
+	int		nbr_char;
+	size_t	nbr_digits;
+	int		nbr;
 
 	nbr = va_arg(args, int);
 	nbr_digits = numb_of_digits((int)nbr);

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 14:51:10 by addzikow          #+#    #+#             */
-/*   Updated: 2020/12/18 14:12:05 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:29:39 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list *lst;
+	t_list	*lst;
 
 	if (!new)
 		return ;

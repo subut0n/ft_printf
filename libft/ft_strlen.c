@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:06:18 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/07 14:44:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:45:05 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char const *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

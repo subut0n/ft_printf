@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:44:59 by addzikow          #+#    #+#             */
-/*   Updated: 2020/12/18 14:27:21 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:33:17 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	if (lst == NULL)

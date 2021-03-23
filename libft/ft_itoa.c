@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:00:37 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 13:06:40 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:29:06 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static char	*malloc_string(int n)
 
 	if (n < 0)
 	{
-		if (!(str = malloc(sizeof(char) * (numb_of_digits(n) + 2))))
+		str = malloc(sizeof(char) * (numb_of_digits(n) + 2));
+		if (!(str))
 			return (NULL);
 	}
 	else
 	{
-		if (!(str = malloc(sizeof(char) * (numb_of_digits(n) + 1))))
+		str = malloc(sizeof(char) * (numb_of_digits(n) + 1));
+		if (!(str))
 			return (NULL);
 	}
 	return (str);
@@ -89,11 +91,12 @@ static char	*neg_transcripted_string(int n, char *str)
 	return (str);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 
-	if (!(str = malloc_string(n)))
+	str = malloc_string(n);
+	if (!(str))
 		return (NULL);
 	if (n < 0)
 		str = neg_transcripted_string(n, str);

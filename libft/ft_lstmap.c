@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:30:32 by addzikow          #+#    #+#             */
-/*   Updated: 2020/12/18 14:25:49 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:31:33 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f || !del)
 		return (NULL);
-	if (!(new_lst = ft_lstnew((f)(lst->content))))
+	new_lst = ft_lstnew((f)(lst->content));
+	if (!(new_lst))
 		return (NULL);
 	save = new_lst;
 	lst = lst->next;
 	while (lst)
 	{
-		if (!(new_lst->next = ft_lstnew((f)(lst->content))))
+		new_lst->next = ft_lstnew((f)(lst->content));
+		if (!(new_lst->next))
 		{
 			ft_lstclear(&save, del);
 			return (NULL);

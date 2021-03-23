@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:04:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/13 13:17:27 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:38:37 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int size;
+	int	size;
 
 	if (!fd || !s)
 		return ;

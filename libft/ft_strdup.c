@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:05:34 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/08 14:14:19 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:42:44 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_strdup(const char *s)
 		size++;
 		i++;
 	}
-	if (!(tab = malloc(sizeof(char) * (size + 1))))
+	tab = malloc(sizeof(char) * (size + 1));
+	if (!(tab))
 		return (NULL);
 	i = 0;
 	while (s[i])

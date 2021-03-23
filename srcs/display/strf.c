@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:55:23 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/15 15:02:38 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:42:54 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	print_width(char *str, t_options *options)
 {
-	int print_width;
-	int nbr_char;
-	size_t length;
+	int		print_width;
+	int		nbr_char;
+	size_t	length;
 
 	nbr_char = 0;
 	length = 0;
@@ -44,9 +44,9 @@ static int	print_width(char *str, t_options *options)
 
 static int	print_str(int is_null, char *str, t_options *options)
 {
-	int nbr_char;
-	size_t i;
-	size_t limit;
+	int		nbr_char;
+	size_t	i;
+	size_t	limit;
 
 	nbr_char = 0;
 	i = 0;
@@ -66,11 +66,11 @@ static int	print_str(int is_null, char *str, t_options *options)
 	return (nbr_char);
 }
 
-int		strf(t_options *options, va_list args)
+int	strf(t_options *options, va_list args)
 {
-	char *str;
-	size_t is_null;
-	int nbr_char;
+	char	*str;
+	size_t	is_null;
+	int		nbr_char;
 
 	str = va_arg(args, char *);
 	is_null = 0;
@@ -89,5 +89,5 @@ int		strf(t_options *options, va_list args)
 		nbr_char = print_width(str, options);
 		nbr_char += print_str(is_null, str, options);
 	}
-	return(nbr_char);
+	return (nbr_char);
 }

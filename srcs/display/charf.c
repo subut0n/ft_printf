@@ -6,17 +6,17 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:29:59 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/11 15:24:38 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:23:57 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int print_width(t_options *options)
+static int	print_width(t_options *options)
 {
-	int width;
-	int nbr_char;
-	
+	int	width;
+	int	nbr_char;
+
 	width = options->width - 1;
 	nbr_char = 0;
 	while (width-- > 0)
@@ -27,10 +27,10 @@ static int print_width(t_options *options)
 	return (nbr_char);
 }
 
-int		charf(t_options *options, va_list args)
+int	charf(t_options *options, va_list args)
 {
-	char c;
-	int nbr_char;
+	char	c;
+	int		nbr_char;
 
 	c = va_arg(args, int);
 	nbr_char = 0;
@@ -46,5 +46,5 @@ int		charf(t_options *options, va_list args)
 		nbr_char = nbr_char + 1;
 		ft_putchar(c);
 	}
-	return(nbr_char);
+	return (nbr_char);
 }

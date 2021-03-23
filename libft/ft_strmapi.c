@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:06:25 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/13 13:14:20 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:45:30 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (!(tab = malloc(sizeof(char) * ft_strlen(s) + 1)))
+	tab = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!(tab))
 		return (NULL);
 	while (s[i])
 	{

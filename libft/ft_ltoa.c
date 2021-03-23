@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:00:37 by addzikow          #+#    #+#             */
-/*   Updated: 2021/02/09 13:24:43 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:35:39 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static char	*malloc_string(long n)
 
 	if (n < 0)
 	{
-		if (!(str = malloc(sizeof(char) * (numb_of_digits(n) + 2))))
+		str = malloc(sizeof(char) * (numb_of_digits(n) + 2));
+		if (!(str))
 			return (NULL);
 	}
 	else
 	{
-		if (!(str = malloc(sizeof(char) * (numb_of_digits(n) + 1))))
+		str = malloc(sizeof(char) * (numb_of_digits(n) + 1));
+		if (!(str))
 			return (NULL);
 	}
 	return (str);
@@ -71,15 +73,16 @@ static char	*pos_transcripted_string(long n, char *str)
 	return (str);
 }
 
-char		*ft_ltoa(long n)
+char	*ft_ltoa(long n)
 {
 	char	*str;
-	long numb;
+	long	numb;
 
 	numb = n;
 	if (numb < 0)
 		numb *= -1;
-	if (!(str = malloc_string(numb)))
+	str = malloc_string(numb);
+	if (!(str))
 		return (NULL);
 	str = pos_transcripted_string(numb, str);
 	return (str);

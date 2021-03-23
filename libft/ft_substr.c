@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:07:31 by addzikow          #+#    #+#             */
-/*   Updated: 2021/01/13 12:18:34 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:51:58 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start >= ft_strlen(s))
 	{
-		if (!(str = malloc(sizeof(char) * 1)))
+		str = malloc(sizeof(char) * 1);
+		if (!(str))
 			return (NULL);
 		str[0] = '\0';
 		return (str);
 	}
 	if (len > ft_strlen(s))
 		len = ft_strlen(&s[start]);
-	if (!(str = malloc(sizeof(char) * (len + 1))))
+	str = malloc(sizeof(char) * (len + 1));
+	if (!(str))
 		return (NULL);
 	while (s[start] && i < len)
 		str[i++] = s[start++];

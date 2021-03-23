@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:35:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/15 14:37:59 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:05:38 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ typedef struct s_options
 
 int		is_in_flags(char c);
 int 	is_specifier(char c);
-void	init_struct(t_options *options);
-void	define_flags(const char *ret, size_t i, t_options *options);
-void	define_width(const char *ret, size_t i, t_options *options, va_list args);
-void	define_precision(const char *ret, size_t i, t_options *options, va_list args);
-void	define_specifier(const char *ret, size_t i, t_options *options);
-void	redefine_struct(t_options *options);
-void	define_struct(const char *ret, size_t i, t_options *options, va_list args);
+void	init_struct(t_options *opt);
+void	define_flags(const char *ret, size_t i, t_options *opt);
+void	define_width(const char *ret, size_t i, t_options *opt, va_list args);
+void	define_prec(const char *ret, size_t i, t_options *opt, va_list args);
+void	define_specifier(const char *ret, size_t i, t_options *opt);
+void	redefine_struct(t_options *opt);
+void	define_struct(const char *ret, size_t i, t_options *opt, va_list args);
 int		print_formated(t_options *options, va_list args);
 int		ft_printf(const char *format, ...);
 int		execution(const char *ret, t_options *options, va_list args);

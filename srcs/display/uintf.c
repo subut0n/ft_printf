@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/12 16:42:33 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 14:51:29 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static int	numb_of_digits(unsigned int n)
 	return (numb);
 }
 
-static int	print_precision(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int	print_precision(unsigned int nbr, size_t digit, t_options *options)
 {
-	int nbr_char;
-	size_t precision;
+	int		nbr_char;
+	size_t	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
 	if (precision < 0)
 		precision *= -1;
 	if (nbr == 0 && options->precision < 0)
-		nbr_digit = 0;
-	while (precision > nbr_digit)
+		digit = 0;
+	while (precision > digit)
 	{
 		ft_putchar('0');
 		nbr_char++;
@@ -51,11 +51,11 @@ static int	print_precision(unsigned int nbr, size_t nbr_digit, t_options *option
 	return (nbr_char);
 }
 
-static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int	print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 {
-	int nbr_char;
-	unsigned int width;
-	unsigned int precision;
+	int				nbr_char;
+	unsigned int	width;
+	unsigned int	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -80,11 +80,11 @@ static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_nbr(unsigned int nbr, t_options *options)
+static int	print_nbr(unsigned int nbr, t_options *options)
 {
-	char *str_nbr;
-	long numb;
-	
+	char	*str_nbr;
+	long	numb;
+
 	numb = (long)nbr;
 	if (nbr == 0 && options->dot == 1)
 	{
@@ -99,9 +99,9 @@ static int print_nbr(unsigned int nbr, t_options *options)
 
 int	uintf(t_options *options, va_list args)
 {
-	int nbr_char;
-	size_t nbr_digits;
-	unsigned int nbr;
+	int				nbr_char;
+	size_t			nbr_digits;
+	unsigned int	nbr;
 
 	nbr = va_arg(args, unsigned int);
 	nbr_digits = numb_of_digits(nbr);

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:31:49 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/22 14:44:05 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 16:21:25 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_formated(t_options *options, va_list args)
 {
-	int nbr_char;
+	int	nbr_char;
 
 	nbr_char = 0;
 	if (options->specifier == 'd' || options->specifier == 'i')

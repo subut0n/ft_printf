@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 14:40:52 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:04:56 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,44 +19,35 @@ int	is_in_flags(char c)
 	return (0);
 }
 
-int is_specifier(char c)
+int	is_specifier(char c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'u' || c == 'i' || c == 'x' || c == 'X' || c == '%')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'u' || c == 'i'
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
 
-void	init_struct(t_options *options)
+void	init_struct(t_options *opt)
 {
-	options->width = 0;
-	options->minus = 0;
-	options->zero = 0;
-	options->precision = 0;
-	options->neg_prec = 0;
-	options->dot = 0;
-	options->error = 0;
+	opt->width = 0;
+	opt->minus = 0;
+	opt->zero = 0;
+	opt->precision = 0;
+	opt->neg_prec = 0;
+	opt->dot = 0;
+	opt->error = 0;
 }
 
-void	define_struct(const char *ret, size_t i, t_options *options, va_list args)
+void	define_struct(const char *ret, size_t i, t_options *opt, va_list args)
 {
 	if (ret[i] == '%' && ret[i + 1])
 	{
 		i = i + 1;
-		init_struct(options);
-		define_flags(ret, i, options);
-		define_width(ret, i, options, args);
-		define_precision(ret, i, options, args);
-		define_specifier(ret, i, options);
-		redefine_struct(options);
-		// printf("\n"); 									//
-		// printf("error = %d\n", options->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
-		// printf("minus = %d\n", options->minus); 			//
-		// printf("zero = %d\n", options->zero); 			//
-		// printf("width = %d\n", options->width); 			//
-		// printf("dot = %d\n", options->dot);				//
-		// printf("precision = %d\n", options->precision);	//
-		// printf("neg_prec = %d\n", options->neg_prec);
-		// printf("specifier = %c\n", options->specifier);	//
-		// printf("\n");									//
+		init_struct(opt);
+		define_flags(ret, i, opt);
+		define_width(ret, i, opt, args);
+		define_prec(ret, i, opt, args);
+		define_specifier(ret, i, opt);
+		redefine_struct(opt);
 	}
 }

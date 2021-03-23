@@ -6,16 +6,16 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 14:10:27 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/10 15:56:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 15:47:02 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int	print_precision(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int	pt_prec(unsigned int nbr, size_t nbr_digit, t_options *options)
 {
-	int nbr_char;
-	size_t precision;
+	int		nbr_char;
+	size_t	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -32,11 +32,11 @@ static int	print_precision(unsigned int nbr, size_t nbr_digit, t_options *option
 	return (nbr_char);
 }
 
-static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
+static int	pt_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 {
-	int nbr_char;
-	unsigned int width;
-	unsigned int precision;
+	int				nbr_char;
+	unsigned int	width;
+	unsigned int	precision;
 
 	nbr_char = 0;
 	precision = options->precision;
@@ -58,19 +58,19 @@ static int print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 	return (nbr_char);
 }
 
-static int print_nbr(unsigned int nbr, t_options *options)
+static int	pt_nbr(unsigned int nbr, t_options *options)
 {
-	long numb;
-	size_t digit_in_base;
-	
+	long	numb;
+	size_t	digit_in_base;
+
 	numb = (long)nbr;
 	if (nbr == 0 && options->dot == 1)
 	{
 		if (options->precision == 0)
 			return (0);
 	}
-	ft_putnbr_base(nbr,"0123456789ABCDEF");
-	digit_in_base = ft_count_base(nbr,"0123456789ABCDEF");
+	ft_putnbr_base(nbr, "0123456789ABCDEF");
+	digit_in_base = ft_count_base(nbr, "0123456789ABCDEF");
 	if (nbr == 0)
 		digit_in_base = 1;
 	return (digit_in_base);
@@ -78,26 +78,26 @@ static int print_nbr(unsigned int nbr, t_options *options)
 
 int	uhexamajf(t_options *options, va_list args)
 {
-	int nbr_char;
-	size_t nbr_digits;
-	unsigned int nbr;
+	int				nbr_char;
+	size_t			nbr_digits;
+	unsigned int	nbr;
 
 	nbr = va_arg(args, int);
-	nbr_digits = ft_count_base(nbr,"0123456789ABCDEF");
+	nbr_digits = ft_count_base(nbr, "0123456789ABCDEF");
 	if (nbr == 0)
 		nbr_digits = 1;
 	nbr_char = 0;
 	if (options->minus)
 	{
-		nbr_char += print_precision(nbr, nbr_digits, options);
-		nbr_char += print_nbr(nbr, options);
-		nbr_char += print_width(nbr, nbr_digits, options);
+		nbr_char += pt_prec(nbr, nbr_digits, options);
+		nbr_char += pt_nbr(nbr, options);
+		nbr_char += pt_width(nbr, nbr_digits, options);
 	}
 	else
 	{
-		nbr_char = print_width(nbr, nbr_digits, options);
-		nbr_char += print_precision(nbr, nbr_digits, options);
-		nbr_char += print_nbr(nbr, options);
+		nbr_char = pt_width(nbr, nbr_digits, options);
+		nbr_char += pt_prec(nbr, nbr_digits, options);
+		nbr_char += pt_nbr(nbr, options);
 	}
 	return (nbr_char);
 }
