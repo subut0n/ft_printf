@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:31:36 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/15 14:19:14 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 15:19:23 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execution(const char *ret, t_options *options, va_list args)
 {
 	size_t i;
 	int nbr_char;
-
+	
 	i = 0;
 	nbr_char = 0;
 	while (ret[i])
@@ -47,7 +47,7 @@ int	ft_printf(const char *format, ...)
 	int nbr;
 	const char *ret;
 
-
+	nbr = 0;
 	ret = ft_strdup(format);
 	va_start(args, format);
 	nbr = execution(ret, &options, args);

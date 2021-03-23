@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/12 16:42:37 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 14:23:10 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static int print_width(int nbr, size_t nbr_digit, t_options *options)
 		width = width - 1;
 	if (width < options->precision)
 		width = 0;
-	if (options->precision == 0 && width >= nbr_digit && options->dot == 0)
-		width = width - nbr_digit;
 	if (width < nbr_digit)
 		width = 0;
+	if (options->precision == 0 && width >= nbr_digit && options->dot == 0)
+		width = width - nbr_digit;
 	if (options->precision < nbr_digit && options->dot == 1 && nbr != 0)
 		precision = nbr_digit;
 	while (width > precision)
@@ -123,7 +123,7 @@ int	intf(t_options *options, va_list args)
 	int nbr;
 
 	nbr = va_arg(args, int);
-	nbr_digits = numb_of_digits(nbr);
+	nbr_digits = numb_of_digits((int)nbr);
 	nbr_char = 0;
 	if (options->minus)
 	{

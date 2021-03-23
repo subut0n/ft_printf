@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:40:12 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/15 15:28:53 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/22 14:48:32 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,42 @@ int main (void)
 {
 	int nbr1;
 	int nbr2;
-	int free;
-
-	free = 5;
+	int nbr3;
+	int nbr4;
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
 
 //"%*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X"
 
-	nbr1 = ft_printf("%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", 42, 25, 8, 42, 25, 12, 42, 25, 123456789, 42, 25, 0, 42, 25, 12345678, 42, 25, 97);
+	nbr1 = ft_printf("%3d",c);
 	printf("\n");
-	nbr2 = printf("%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", 42, 25, 8, 42, 25, 12, 42, 25, 123456789, 42, 25, 0, 42, 25, 12345678, 42, 25, 97);
+	nbr1 = ft_printf("%3d",c);
 	printf("\n");
+
+	nbr2 = printf("%3d",c);
+	printf("\n");
+	nbr2 = printf("%3d",c);
+	printf("\n");
+
 	printf("nbr1 = %d\n", nbr1);
 	printf("nbr2 = %d\n", nbr2);
 
