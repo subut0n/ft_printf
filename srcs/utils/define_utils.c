@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 14:37:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 15:12:40 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 15:14:44 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ void	define_width(const char *ret, size_t i, t_options *opt, va_list args)
 
 	width = 0;
 	secure_flags = i;
-	while (is_in_flags(ret[i]))
-	{
-		i++;
+	while (is_in_flags(ret[i]) && i++)
 		secure_flags++;
-	}
 	while (ret[i] >= '0' && ret[i] <= '9')
 		width = (width * 10) + (unsigned int)ret[i++] - 48;
 	if (ret[i] == '*')

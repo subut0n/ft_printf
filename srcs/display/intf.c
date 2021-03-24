@@ -6,30 +6,11 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 15:28:17 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 14:43:21 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-
-static int	numb_of_digits(int n)
-{
-	int		numb;
-	long	nb;
-
-	nb = n;
-	numb = 0;
-	if (nb < 0)
-		nb = -nb;
-	if (nb == 0)
-		numb = 1;
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		numb++;
-	}
-	return (numb);
-}
 
 static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
 {
@@ -64,22 +45,19 @@ static int	print_width(int nbr, size_t nbr_digit, t_options *options)
 	width = options->width;
 	if (nbr < 0 && width != 0)
 		width = width - 1;
-	if (width < options->precision)
-		width = 0;
-	if (width < nbr_digit)
+	if (width < options->precision || width < nbr_digit)
 		width = 0;
 	if (options->precision == 0 && width >= nbr_digit && options->dot == 0)
 		width = width - nbr_digit;
 	if (options->precision < nbr_digit && options->dot == 1 && nbr != 0)
 		precision = nbr_digit;
-	while (width > precision)
+	while (width-- > precision)
 	{
 		if (options->zero && options->neg_prec < 0)
 			ft_putchar('0');
 		else
 			ft_putchar(' ');
 		nbr_char++;
-		width--;
 	}
 	return (nbr_char);
 }
@@ -123,7 +101,7 @@ int	intf(t_options *options, va_list args)
 	int		nbr;
 
 	nbr = va_arg(args, int);
-	nbr_digits = numb_of_digits((int)nbr);
+	nbr_digits = ft_count_digit((int)nbr);
 	nbr_char = 0;
 	if (options->minus)
 	{

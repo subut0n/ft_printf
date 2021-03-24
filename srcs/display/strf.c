@@ -6,39 +6,45 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 11:55:23 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 15:42:54 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 15:05:48 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int	print_width(char *str, t_options *options)
+static int	print_width(int nbr_char, int width)
 {
-	int		print_width;
+	while (width-- > 0)
+	{
+		ft_putchar(' ');
+		nbr_char++;
+	}
+	return (nbr_char);
+}
+
+static int	adapt_and_print_width(char *str, t_options *options)
+{
+	int		width;
 	int		nbr_char;
 	size_t	length;
 
 	nbr_char = 0;
 	length = 0;
-	print_width = 0;
+	width = 0;
 	while (str[length])
 		length++;
 	if (options->width > 0)
-		print_width = options->width - length;
+		width = options->width - length;
 	if (options->dot)
 	{
 		if (options->precision < length && options->neg_prec == 0)
-			print_width = options->width - options->precision;
+			width = options->width - options->precision;
 		if (options->precision > length && options->width == 0)
-			print_width = 0;
+			width = 0;
 	}
-	if (print_width < 0)
-		print_width = 0;
-	while (print_width-- > 0)
-	{
-		ft_putchar(' ');
-		nbr_char++;
-	}
+	if (width < 0)
+		width = 0;
+	nbr_char = print_width(nbr_char, width);
 	return (nbr_char);
 }
 
@@ -82,11 +88,11 @@ int	strf(t_options *options, va_list args)
 	if (options->minus)
 	{
 		nbr_char = print_str(is_null, str, options);
-		nbr_char += print_width(str, options);
+		nbr_char += adapt_and_print_width(str, options);
 	}
 	else
 	{
-		nbr_char = print_width(str, options);
+		nbr_char = adapt_and_print_width(str, options);
 		nbr_char += print_str(is_null, str, options);
 	}
 	return (nbr_char);
