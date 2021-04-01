@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:40:12 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/22 14:48:32 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 15:50:54 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main (void)
 	int nbr2;
 	int nbr3;
 	int nbr4;
-	int		a = -4;
+	int		a = -1;
 	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
@@ -45,16 +45,13 @@ int main (void)
 	char	*u = "-0";
 
 //"%*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X, %*.*u, %*.*x, %*.*X"
-
-	nbr1 = ft_printf("%3d",c);
-	printf("\n");
-	nbr1 = ft_printf("%3d",c);
+	nbr1 = ft_printf("%0*.*d", 4, -2, -12);
 	printf("\n");
 
-	nbr2 = printf("%3d",c);
+
+	nbr2 = printf("%0*.*d", 4, -2, -12);
 	printf("\n");
-	nbr2 = printf("%3d",c);
-	printf("\n");
+
 
 	printf("nbr1 = %d\n", nbr1);
 	printf("nbr2 = %d\n", nbr2);

@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/24 14:43:21 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 17:25:48 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
 
 	nbr_char = 0;
 	precision = options->precision;
+	if (options->neg_prec < 0 && nbr < 0 && options->zero)
+		ft_putchar('0');
 	if (precision < 0)
 		precision *= -1;
 	if (nbr < 0 && options->dot == 0)
@@ -53,7 +55,7 @@ static int	print_width(int nbr, size_t nbr_digit, t_options *options)
 		precision = nbr_digit;
 	while (width-- > precision)
 	{
-		if (options->zero && options->neg_prec < 0)
+		if (options->zero && options->neg_prec < 0 && nbr >= 0)
 			ft_putchar('0');
 		else
 			ft_putchar(' ');
@@ -78,6 +80,7 @@ static int	print_sign(int nbr)
 static int	print_nbr(int nbr, t_options *options)
 {
 	char	*str_nbr;
+	int nbr_char;
 	long	numb;
 
 	numb = (long)nbr;
@@ -90,8 +93,9 @@ static int	print_nbr(int nbr, t_options *options)
 	}
 	str_nbr = ft_ltoa(numb);
 	ft_putstr(str_nbr);
+	nbr_char = ft_strlen(str_nbr);
 	free(str_nbr);
-	return ((int)ft_strlen(str_nbr));
+	return (nbr_char);
 }
 
 int	intf(t_options *options, va_list args)

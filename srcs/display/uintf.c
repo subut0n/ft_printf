@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:15:44 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 14:51:29 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/03/30 17:15:25 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static int	print_width(unsigned int nbr, size_t nbr_digit, t_options *options)
 static int	print_nbr(unsigned int nbr, t_options *options)
 {
 	char	*str_nbr;
+	int nbr_char;
 	long	numb;
 
 	numb = (long)nbr;
@@ -93,8 +94,9 @@ static int	print_nbr(unsigned int nbr, t_options *options)
 	}
 	str_nbr = ft_uitoa(numb);
 	ft_putstr(str_nbr);
+	nbr_char = ft_strlen(str_nbr);
 	free(str_nbr);
-	return ((int)ft_strlen(str_nbr));
+	return (nbr_char);
 }
 
 int	uintf(t_options *options, va_list args)
