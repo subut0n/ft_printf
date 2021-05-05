@@ -6,56 +6,63 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:49:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/30 17:25:48 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 16:10:05 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int	print_precision(int nbr, size_t nbr_digit, t_options *options)
+static int	print_precision(int nbr, size_t nbr_digit, t_options *opt)
 {
 	int		nbr_char;
+	size_t		digit;
 	size_t	precision;
+	long int neg_prec_abs;
+	size_t width;
 
 	nbr_char = 0;
-	precision = options->precision;
-	if (options->neg_prec < 0 && nbr < 0 && options->zero)
-		ft_putchar('0');
-	if (precision < 0)
-		precision *= -1;
-	if (nbr < 0 && options->dot == 0)
-		nbr_digit = nbr_digit + 1;
-	if (nbr == 0 && options->precision < 0)
-		nbr_digit = 0;
-	while (precision > nbr_digit)
+	digit = nbr_digit;
+	precision = opt->precision;
+	neg_prec_abs = ft_absolute(opt->neg_prec);
+	width = opt->width;
+	if (opt->zero && neg_prec_abs > 0 && nbr < 0 && width > 0)
+		precision = width - 1;
+	if (nbr < 0 && opt->dot == 0)
+		digit = digit + 1;
+	if (nbr == 0 && opt->precision < 0)
+		digit = 0;
+	while (precision-- > digit)
 	{
 		ft_putchar('0');
 		nbr_char++;
-		precision--;
 	}
 	return (nbr_char);
 }
 
-static int	print_width(int nbr, size_t nbr_digit, t_options *options)
+static int	print_width(int nbr, size_t nbr_digit, t_options *opt)
 {
 	int				nbr_char;
-	unsigned int	width;
-	unsigned int	precision;
+	size_t	width;
+	size_t	precision;
+	long int neg_prec_abs;
 
 	nbr_char = 0;
-	precision = options->precision;
-	width = options->width;
+	precision = opt->precision;
+	width = ft_absolute((int)opt->width);
+	neg_prec_abs = ft_absolute(opt->neg_prec);
 	if (nbr < 0 && width != 0)
 		width = width - 1;
-	if (width < options->precision || width < nbr_digit)
+	if (width < opt->precision || width < nbr_digit)
 		width = 0;
-	if (options->precision == 0 && width >= nbr_digit && options->dot == 0)
+	if (opt->precision == 0 && width >= nbr_digit && opt->dot == 0)
 		width = width - nbr_digit;
-	if (options->precision < nbr_digit && options->dot == 1 && nbr != 0)
+	if (opt->precision < nbr_digit && opt->dot == 1 && nbr != 0)
 		precision = nbr_digit;
+	if (opt->zero && neg_prec_abs > 0 && nbr < 0)
+		width = 0;
 	while (width-- > precision)
 	{
-		if (options->zero && options->neg_prec < 0 && nbr >= 0)
+		if (opt->zero && opt->neg_prec < 0 && nbr >= 0 && !opt->minus)
 			ft_putchar('0');
 		else
 			ft_putchar(' ');

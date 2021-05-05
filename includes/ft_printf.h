@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:35:38 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/30 17:04:52 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 15:36:31 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_options
 	int				zero;
 	int				dot;
 	unsigned int	precision;
-	int				neg_prec;
+	long int		neg_prec;
 	int				error;
 }	t_options;
 

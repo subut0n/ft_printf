@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:53:40 by addzikow          #+#    #+#             */
-/*   Updated: 2021/03/23 15:04:56 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 15:37:53 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,15 @@ void	define_struct(const char *ret, size_t i, t_options *opt, va_list args)
 		define_prec(ret, i, opt, args);
 		define_specifier(ret, i, opt);
 		redefine_struct(opt);
+		// printf("\n"); 									//
+		// printf("error = %d\n", opt->error); 			// ESSAIS DE LA CONFORMITE DU PARSING
+		// printf("minus = %d\n", opt->minus); 			//
+		// printf("zero = %d\n", opt->zero); 			//
+		// printf("width = %d\n", opt->width); 			//
+		// printf("dot = %d\n", opt->dot);				//
+		// printf("precision = %d\n", opt->precision);	//
+		// printf("precision_neg = %d\n", opt->neg_prec);
+		// printf("specifier = %c\n", opt->specifier);	//
+		// printf("\n");
 	}
 }
