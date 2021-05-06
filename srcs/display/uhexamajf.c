@@ -6,7 +6,7 @@
 /*   By: addzikow <addzikow@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 14:10:27 by addzikow          #+#    #+#             */
-/*   Updated: 2021/05/05 17:04:20 by addzikow         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:41:59 by addzikow         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	pt_precision(int nbr, size_t nbr_digit, t_options *opt)
 {
-	int		nbr_char;
+	int			nbr_char;
 	size_t		digit;
-	size_t	precision;
-	long int neg_prec_abs;
-	size_t width;
+	size_t		precision;
+	long int	neg_prec_abs;
+	size_t		width;
 
 	nbr_char = 0;
 	digit = nbr_digit;
@@ -39,23 +39,22 @@ static int	pt_precision(int nbr, size_t nbr_digit, t_options *opt)
 
 static int	pt_width(unsigned int nbr, size_t nbr_digit, t_options *opt)
 {
-	int				nbr_char;
-	size_t	width;
-	size_t	precision;
-	long int neg_prec_abs;
+	int			nbr_char;
+	size_t		width;
+	size_t		precision;
+	long int	neg_prec_abs;
 
 	nbr_char = 0;
 	precision = opt->precision;
 	width = ft_absolute((int)opt->width);
 	neg_prec_abs = ft_absolute(opt->neg_prec);
-	if (width < opt->precision || width < nbr_digit)
+	if (width < opt->precision || width < nbr_digit
+		|| (opt->zero && neg_prec_abs > 0 && nbr < 0))
 		width = 0;
 	if (opt->precision == 0 && width >= nbr_digit && opt->dot == 0)
 		width = width - nbr_digit;
 	if (opt->precision < nbr_digit && opt->dot == 1 && nbr != 0)
 		precision = nbr_digit;
-	if (opt->zero && neg_prec_abs > 0 && nbr < 0)
-		width = 0;
 	while (width-- > precision)
 	{
 		if (opt->zero && opt->neg_prec < 0 && nbr >= 0 && !opt->minus)
